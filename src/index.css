@@ -1,0 +1,126 @@
+/* Paleta PawPets: sobrescribe las variables de Bootstrap en lugar de duplicar sus estilos. */
+:root {
+  --paw-primario: #ff8a3d;
+  --paw-primario-oscuro: #e5732a;
+  --paw-secundario: #2c7a7b;
+  --paw-oscuro: #22303c;
+  --paw-claro: #fef6ee;
+  --bs-primary: var(--paw-primario);
+  --bs-primary-rgb: 255, 138, 61;
+  --bs-link-color: var(--paw-secundario);
+  --bs-link-hover-color: var(--paw-primario-oscuro);
+}
+
+body {
+  min-width: 320px;
+  background: var(--paw-claro);
+  color: var(--paw-oscuro);
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--paw-primario);
+  --bs-btn-border-color: var(--paw-primario);
+  --bs-btn-hover-bg: var(--paw-primario-oscuro);
+  --bs-btn-hover-border-color: var(--paw-primario-oscuro);
+  --bs-btn-active-bg: var(--paw-primario-oscuro);
+  --bs-btn-active-border-color: var(--paw-primario-oscuro);
+  --bs-btn-disabled-bg: var(--paw-primario);
+  --bs-btn-disabled-border-color: var(--paw-primario);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-color: #fff;
+}
+
+.site-header,
+.admin-menu {
+  background: var(--paw-oscuro);
+}
+
+.logo {
+  color: var(--paw-primario);
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.site-header .nav-link {
+  color: #fff;
+}
+
+.site-header .nav-link:hover,
+.site-header .nav-link.active {
+  color: var(--paw-primario);
+}
+
+.admin-menu .nav-link {
+  color: #fff;
+}
+
+.admin-menu .nav-link.active {
+  background: var(--paw-primario);
+}
+
+.hero {
+  background: var(--paw-secundario);
+  color: #fff;
+  border-radius: 12px;
+  padding: 3rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.hero-adopcion {
+  background: var(--paw-primario);
+}
+
+.section-title {
+  color: var(--paw-secundario);
+  margin-bottom: 1.25rem;
+}
+
+.producto-imagen,
+.categoria-imagen {
+  height: 180px;
+  object-fit: cover;
+}
+
+.producto-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  background: #e9ecef;
+  color: #6c757d;
+}
+
+.cantidad-input {
+  width: 5rem;
+}
+
+.site-footer {
+  background: var(--paw-oscuro);
+  color: #ddd;
+  padding: 2rem 0 1rem;
+}
+
+.site-footer h2 {
+  color: var(--paw-primario);
+}
+
+.site-footer a {
+  display: block;
+  color: #ddd;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  margin: 1.5rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid #444;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+@media (min-width: 768px) {
+  .admin-menu {
+    min-height: 100vh;
+  }
+}
