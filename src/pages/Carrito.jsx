@@ -3,9 +3,12 @@ import useCarrito from '../hooks/useCarrito';
 import { precioCLP } from '../utils/formato';
 import { precioFinal } from '../utils/productos';
 
+// Página del carrito con los productos que eligió el usuario
 export default function Carrito() {
+  // Productos, total y acciones para modificar el carrito
   const { items, total, cambiarCantidad, quitar, vaciar } = useCarrito();
 
+  // Si el carrito está vacío, muestra un aviso
   if (items.length === 0) {
     return (
       <p className="alert alert-info">
@@ -17,6 +20,7 @@ export default function Carrito() {
   return (
     <>
       <h1 className="section-title">Carrito de compras</h1>
+      {/* Tabla con los productos del carrito */}
       <div className="table-responsive">
         <table className="table align-middle">
           <thead>
@@ -31,11 +35,13 @@ export default function Carrito() {
             </tr>
           </thead>
           <tbody>
+            {/* Una fila por cada producto */}
             {items.map(({ producto, cantidad, subtotal }) => (
               <tr key={producto.id}>
                 <td>{producto.nombre}</td>
                 <td>{precioCLP(precioFinal(producto))}</td>
                 <td>
+                  {/* Input para cambiar la cantidad, máximo el stock */}
                   <input
                     type="number"
                     className="form-control form-control-sm cantidad-input"
@@ -48,6 +54,7 @@ export default function Carrito() {
                 </td>
                 <td>{precioCLP(subtotal)}</td>
                 <td>
+                  {/* Botón para sacar este producto del carrito */}
                   <button
                     type="button"
                     className="btn btn-sm btn-danger"
@@ -61,7 +68,9 @@ export default function Carrito() {
           </tbody>
         </table>
       </div>
+      {/* Total a pagar */}
       <p className="h4 text-end">Total: {precioCLP(total)}</p>
+      {/* Botones para vaciar el carrito o ir a pagar */}
       <div className="d-flex justify-content-end gap-2">
         <button type="button" className="btn btn-secondary" onClick={vaciar}>
           Limpiar

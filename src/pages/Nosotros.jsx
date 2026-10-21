@@ -1,6 +1,8 @@
+// Página "Nosotros" con información de la tienda
 export default function Nosotros() {
   return (
     <section className="row justify-content-center">
+      {/* Texto centrado que cuenta quiénes somos */}
       <div className="col-lg-8">
         <h1 className="section-title">Nosotros</h1>
         <p>

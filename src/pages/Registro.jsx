@@ -6,6 +6,7 @@ import useAuth from '../hooks/useAuth';
 import useFormulario from '../hooks/useFormulario';
 import { coincideCon, correo, minimo, requerido } from '../utils/validaciones';
 
+// Valores con que parte vacío el formulario de registro
 const INICIAL = {
   nombre: '',
   apellidos: '',
@@ -16,6 +17,7 @@ const INICIAL = {
   region: '',
   comuna: '',
 };
+// Validaciones: clave de 6 letras mínimo y que coincidan
 const REGLAS = {
   nombre: [requerido],
   apellidos: [requerido],
@@ -27,15 +29,22 @@ const REGLAS = {
   comuna: [requerido],
 };
 
+// Página para crear una cuenta nueva
 export default function Registro() {
+  // Función que guarda el usuario nuevo
   const { registrar } = useAuth();
+  // Para mandar al usuario a otra página
   const navegar = useNavigate();
+  // Se pone en true si el correo ya está registrado
   const [correoRepetido, setCorreoRepetido] = useState(false);
 
+  // Maneja el formulario de registro
   const { valores, errores, cambiar, enviar } = useFormulario(
     INICIAL,
     REGLAS,
+    // Saca "confirmar" porque no se guarda, solo era para validar
     ({ confirmar: _repetida, ...datos }) => {
+      // Si se registró va al inicio; si no, muestra error
       if (registrar(datos)) navegar('/');
       else setCorreoRepetido(true);
     },
@@ -45,6 +54,7 @@ export default function Registro() {
     <section className="col-lg-6 mx-auto">
       <h1 className="section-title">Crear cuenta</h1>
       <form className="card card-body shadow-sm" onSubmit={enviar} noValidate>
+        {/* Nombre y apellidos lado a lado */}
         <div className="row">
           <div className="col-md-6">
             <CampoFormulario
@@ -73,6 +83,7 @@ export default function Registro() {
           error={errores.correo}
           onChange={cambiar}
         />
+        {/* Contraseña y su confirmación */}
         <div className="row">
           <div className="col-md-6">
             <CampoFormulario
@@ -95,7 +106,9 @@ export default function Registro() {
             />
           </div>
         </div>
+        {/* Calle, región y comuna */}
         <CamposDireccion valores={valores} errores={errores} cambiar={cambiar} />
+        {/* Error si ya hay una cuenta con ese correo */}
         {correoRepetido && (
           <p className="alert alert-danger" role="alert">
             Ya existe una cuenta con ese correo.
@@ -104,6 +117,7 @@ export default function Registro() {
         <button type="submit" className="btn btn-primary">
           Crear cuenta
         </button>
+        {/* Link para ir al login */}
         <p className="mt-3 mb-0 text-center">
           ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
         </p>
