@@ -21,7 +21,7 @@ export const categorias = [
   {
     id: 4,
     nombre: 'Salud',
-    imagen: 'https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=400',
+    imagen: '/img/categorias/categoria-salud.jpg',
   },
 ];
 
