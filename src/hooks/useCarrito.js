@@ -3,5 +3,6 @@ import { CarritoContext } from '../context/contextos';
 
 /** Acceso al carrito: { items, total, cantidadTotal, agregar, cambiarCantidad, quitar, vaciar }. */
 export default function useCarrito() {
+  // Lee lo que comparte el CarritoProvider
   return useContext(CarritoContext);
 }
