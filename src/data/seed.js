@@ -39,7 +39,7 @@ export const productos = [
     precio: 18990,
     precioOferta: 0,
     stock: 25,
-    imagen: 'https://images.unsplash.com/photo-1589927986089-35812388d1f4?w=400',
+    imagen: '/img/productos/alimento-perro-premium.jpg',
     descripcion:
       'Alimento balanceado con proteínas de alta calidad para perros adultos de todas las razas.',
     destacado: true,
@@ -52,7 +52,7 @@ export const productos = [
     precio: 16490,
     precioOferta: 14990,
     stock: 18,
-    imagen: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=400',
+    imagen: '/img/productos/alimento-gato-esterilizado.jpg',
     descripcion:
       'Fórmula baja en grasa que ayuda a mantener el peso ideal de gatos esterilizados.',
     destacado: true,
