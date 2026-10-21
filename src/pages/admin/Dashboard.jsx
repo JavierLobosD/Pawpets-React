@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import useColeccion from '../../hooks/useColeccion';
 
+// Accesos rápidos: [ruta, título, descripción]
 const ACCESOS = [
   ['/admin/ordenes', 'Órdenes', 'Seguimiento de las compras realizadas.'],
   ['/admin/productos', 'Productos', 'Inventario y detalle de productos.'],
@@ -10,14 +11,18 @@ const ACCESOS = [
   ['/admin/perfil', 'Perfil', 'Tu información de cuenta.'],
 ];
 
+// Página principal del panel de administración
 export default function Dashboard() {
+  // Cuenta solo las compras que se pagaron
   const compras = useColeccion('ordenes').filter((o) => o.estado === 'Pagada').length;
+  // Cantidad de productos y de usuarios
   const productos = useColeccion('productos').length;
   const usuarios = useColeccion('usuarios').length;
 
   return (
     <>
       <h1 className="h3">Dashboard</h1>
+      {/* Tarjetas de colores con los totales */}
       <div className="row g-3 mb-4">
         {[
           ['Compras', compras, 'primary'],
@@ -34,6 +39,7 @@ export default function Dashboard() {
           </div>
         ))}
       </div>
+      {/* Tarjetas que llevan a cada sección del admin */}
       <div className="row g-3">
         {ACCESOS.map(([ruta, titulo, texto]) => (
           <div className="col-sm-6 col-xl-4" key={ruta}>

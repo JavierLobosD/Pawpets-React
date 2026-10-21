@@ -2,11 +2,14 @@ import { Link } from 'react-router-dom';
 import useColeccion from '../../hooks/useColeccion';
 import { precioCLP } from '../../utils/formato';
 
+// Página del admin con todas las órdenes
 export default function Ordenes() {
+  // Trae todas las órdenes guardadas
   const ordenes = useColeccion('ordenes');
   return (
     <>
       <h1 className="h3">Órdenes y boletas</h1>
+      {/* Aviso si no hay órdenes; si hay, la tabla */}
       {ordenes.length === 0 ? (
         <p className="alert alert-info">Aún no hay órdenes.</p>
       ) : (
@@ -23,9 +26,11 @@ export default function Ordenes() {
               </tr>
             </thead>
             <tbody>
+              {/* Una fila por cada orden */}
               {ordenes.map((o) => (
                 <tr key={o.id}>
                   <th scope="row">{o.id}</th>
+                  {/* Fecha en formato chileno */}
                   <td>{new Date(o.fecha).toLocaleDateString('es-CL')}</td>
                   <td>
                     {o.nombre} {o.apellidos}
@@ -33,6 +38,7 @@ export default function Ordenes() {
                   <td>{precioCLP(o.total)}</td>
                   <td>{o.estado}</td>
                   <td>
+                    {/* Link para ver la boleta de la orden */}
                     <Link
                       to={`/admin/ordenes/${o.id}`}
                       className="btn btn-sm btn-outline-primary"
