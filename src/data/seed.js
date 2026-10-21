@@ -25,8 +25,7 @@ export const categorias = [
   },
 ];
 
-// Arma el link de una foto de Unsplash a partir de su id, así no repetimos la URL larga.
-const foto = (id) => `https://images.unsplash.com/photo-${id}?w=500&q=80`;
+// Cambio: se borró la función foto porque ya no se usaba
 
 // Productos de la tienda (20 en total). precio y precioOferta van en pesos chilenos
 // y imagen es el link de la foto.
