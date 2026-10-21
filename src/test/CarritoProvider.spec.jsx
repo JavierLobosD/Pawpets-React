@@ -22,10 +22,12 @@ describe('CarritoProvider (estado compartido del carrito)', () => {
   // Agregar el mismo producto debe sumar cantidades
   it('agregar suma cantidades y calcula el total con el precio vigente', () => {
     const { result } = montar();
-    act(() => result.current.agregar(1, 2)); // $18.990 c/u
+    // Cambio: lee el precio desde db, antes estaba fijo y quedó viejo
+    const precio = db.obtener('productos', 1).precio;
+    act(() => result.current.agregar(1, 2)); // precio actual del producto 1 c/u
     act(() => result.current.agregar(1));
     expect(result.current.cantidadTotal).toBe(3);
-    expect(result.current.total).toBe(18990 * 3);
+    expect(result.current.total).toBe(precio * 3);
   });
 
   // No se puede agregar más que el stock
