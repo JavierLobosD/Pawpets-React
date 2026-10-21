@@ -1,5 +1,6 @@
 /** Datos iniciales de la tienda. db.js los copia a localStorage la primera vez. */
 
+// Las 4 categorías de la tienda con su imagen
 export const categorias = [
   {
     id: 1,
@@ -285,6 +286,7 @@ export const productos = [
 
 // Las contraseñas están en texto plano solo porque esto simula una base de datos.
 export const usuarios = [
+  // Cuenta de administrador para entrar al panel
   {
     id: 1,
     nombre: 'Admin',
@@ -296,6 +298,7 @@ export const usuarios = [
     comuna: 'Puente Alto',
     calle: 'Av. Concha y Toro 100',
   },
+  // Cuenta de cliente normal para probar compras
   {
     id: 2,
     nombre: 'Camila',
@@ -309,6 +312,7 @@ export const usuarios = [
   },
 ];
 
+// Artículos del blog: título, resumen corto y texto completo
 export const blogs = [
   {
     id: 1,
