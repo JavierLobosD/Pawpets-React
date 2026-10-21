@@ -6,7 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 
+// Punto de partida: dibuja la app dentro del div "root"
 ReactDOM.createRoot(document.getElementById('root')).render(
+  // StrictMode ayuda a encontrar errores mientras programamos
   <React.StrictMode>
     <App />
   </React.StrictMode>,

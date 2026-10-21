@@ -31,13 +31,18 @@ import Registro from './pages/Registro';
 /** Define el mapa de navegación del diagrama: vistas de la tienda y del administrador. */
 export default function App() {
   return (
+    // Router para poder cambiar de página sin recargar
     <BrowserRouter>
+      {/* Comparte la sesión con toda la app */}
       <AuthProvider>
+        {/* Comparte el carrito con toda la app */}
         <CarritoProvider>
           <Routes>
+            {/* Páginas de la tienda, con menú y pie de página */}
             <Route element={<TiendaLayout />}>
               <Route index element={<Home />} />
               <Route path="productos" element={<Productos />} />
+              {/* :id es el número del producto en la URL */}
               <Route path="productos/:id" element={<DetalleProducto />} />
               <Route path="categorias" element={<Categorias />} />
               <Route path="categorias/:id" element={<Categorias />} />
@@ -50,11 +55,14 @@ export default function App() {
               <Route path="registro" element={<Registro />} />
               <Route path="carrito" element={<Carrito />} />
               <Route path="checkout" element={<Checkout />} />
+              {/* Misma página para compra exitosa y pago con error */}
               <Route path="compra/exitosa/:id" element={<PagoResultado exito />} />
               <Route path="compra/error/:id" element={<PagoResultado exito={false} />} />
             </Route>
 
+            {/* Páginas del admin, solo entra quien tiene rol admin */}
             <Route path="admin" element={<RutaAdmin />}>
+              {/* Todas usan el menú lateral del admin */}
               <Route element={<AdminLayout />}>
                 <Route index element={<Dashboard />} />
                 <Route path="ordenes" element={<Ordenes />} />
@@ -63,6 +71,7 @@ export default function App() {
                 <Route path="usuarios/:id/historial" element={<HistorialCompras />} />
                 <Route path="reportes" element={<Reportes />} />
                 <Route path="perfil" element={<Perfil />} />
+                {/* Rutas generales para productos, categorías y usuarios */}
                 <Route path=":entidad" element={<AdminEntidad />} />
                 <Route path=":entidad/nuevo" element={<AdminFormulario />} />
                 <Route path=":entidad/:id" element={<AdminFormulario />} />

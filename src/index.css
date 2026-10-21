@@ -1,22 +1,26 @@
 /* Paleta PawPets: sobrescribe las variables de Bootstrap en lugar de duplicar sus estilos. */
 :root {
+  /* Colores propios de la tienda */
   --paw-primario: #ff8a3d;
   --paw-primario-oscuro: #e5732a;
   --paw-secundario: #2c7a7b;
   --paw-oscuro: #22303c;
   --paw-claro: #fef6ee;
+  /* Cambia el color principal y los links de Bootstrap */
   --bs-primary: var(--paw-primario);
   --bs-primary-rgb: 255, 138, 61;
   --bs-link-color: var(--paw-secundario);
   --bs-link-hover-color: var(--paw-primario-oscuro);
 }
 
+/* Fondo claro y texto oscuro en toda la página */
 body {
   min-width: 320px;
   background: var(--paw-claro);
   color: var(--paw-oscuro);
 }
 
+/* Botón principal naranjo, más oscuro al pasar el mouse */
 .btn-primary {
   --bs-btn-bg: var(--paw-primario);
   --bs-btn-border-color: var(--paw-primario);
@@ -31,34 +35,41 @@ body {
   --bs-btn-active-color: #fff;
 }
 
+/* Fondo oscuro para el menú de tienda y admin */
 .site-header,
 .admin-menu {
   background: var(--paw-oscuro);
 }
 
+/* Texto del logo naranjo y en negrita */
 .logo {
   color: var(--paw-primario);
   font-weight: 700;
   font-size: 1.4rem;
 }
 
+/* Links del menú en blanco */
 .site-header .nav-link {
   color: #fff;
 }
 
+/* Link activo o con el mouse encima en naranjo */
 .site-header .nav-link:hover,
 .site-header .nav-link.active {
   color: var(--paw-primario);
 }
 
+/* Links del menú del admin en blanco */
 .admin-menu .nav-link {
   color: #fff;
 }
 
+/* Sección activa del admin con fondo naranjo */
 .admin-menu .nav-link.active {
   background: var(--paw-primario);
 }
 
+/* Banner grande de la portada */
 .hero {
   background: var(--paw-secundario);
   color: #fff;
@@ -67,15 +78,18 @@ body {
   margin-bottom: 2.5rem;
 }
 
+/* Banner de adopción en naranjo */
 .hero-adopcion {
   background: var(--paw-primario);
 }
 
+/* Títulos de cada sección */
 .section-title {
   color: var(--paw-secundario);
   margin-bottom: 1.25rem;
 }
 
+/* Todas las fotos de productos del mismo alto */
 .producto-imagen {
   height: 180px;
   object-fit: cover;
@@ -87,6 +101,7 @@ body {
   object-fit: cover;
 }
 
+/* Cuadro gris cuando un producto no tiene imagen */
 .producto-placeholder {
   display: flex;
   align-items: center;
@@ -96,26 +111,31 @@ body {
   color: #6c757d;
 }
 
+/* Input de cantidad angosto en el carrito */
 .cantidad-input {
   width: 5rem;
 }
 
+/* Pie de página oscuro */
 .site-footer {
   background: var(--paw-oscuro);
   color: #ddd;
   padding: 2rem 0 1rem;
 }
 
+/* Títulos del pie de página en naranjo */
 .site-footer h2 {
   color: var(--paw-primario);
 }
 
+/* Links del pie uno debajo del otro, sin subrayado */
 .site-footer a {
   display: block;
   color: #ddd;
   text-decoration: none;
 }
 
+/* Línea final del copyright, separada con un borde */
 .footer-bottom {
   margin: 1.5rem 0 0;
   padding-top: 1rem;
@@ -124,6 +144,7 @@ body {
   font-size: 0.85rem;
 }
 
+/* Desde pantallas medianas, el menú admin ocupa todo el alto */
 @media (min-width: 768px) {
   .admin-menu {
     min-height: 100vh;
