@@ -6,10 +6,13 @@ import Header from '../components/Header';
 export default function TiendaLayout() {
   return (
     <>
+      {/* Menú de arriba */}
       <Header />
+      {/* Aquí se muestra la página que se visita */}
       <main className="container py-4">
         <Outlet />
       </main>
+      {/* Pie de página */}
       <Footer />
     </>
   );
