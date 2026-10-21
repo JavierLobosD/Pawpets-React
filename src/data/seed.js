@@ -23,11 +23,14 @@ export const categorias = [
   },
 ];
 
-// Las fotos son de Unsplash; con esta función solo guardamos el id de cada una.
+// Arma el link de una foto de Unsplash a partir de su id, así no repetimos la URL larga.
 const foto = (id) => `https://unsplash.com/photos/${id}/download?force=true&w=500`;
 
+// Productos de la tienda (20 en total). precio y precioOferta van en pesos chilenos
+// y imagen es el link de la foto.
 // precioOferta = 0 significa "sin oferta". stock <= UMBRAL_CRITICO se considera crítico.
 export const productos = [
+  // Alimentos para perro: el más vendido, sin oferta
   {
     id: 1,
     nombre: 'Alimento Premium Perro Adulto 8 kg',
@@ -40,6 +43,7 @@ export const productos = [
       'Alimento balanceado con proteínas de alta calidad para perros adultos de todas las razas.',
     destacado: true,
   },
+  // Alimentos para gato: con oferta
   {
     id: 2,
     nombre: 'Alimento Gato Esterilizado 3 kg',
@@ -52,6 +56,7 @@ export const productos = [
       'Fórmula baja en grasa que ayuda a mantener el peso ideal de gatos esterilizados.',
     destacado: true,
   },
+  // Premios para perro, aparece en destacados
   {
     id: 3,
     nombre: 'Snacks Naturales de Pollo 200 g',
@@ -64,6 +69,7 @@ export const productos = [
       'Premios naturales sin colorantes, ideales para el entrenamiento diario.',
     destacado: true,
   },
+  // Juguete: con oferta y poco stock (sale en críticos)
   {
     id: 4,
     nombre: 'Pelota de Goma Resistente',
@@ -75,6 +81,7 @@ export const productos = [
     descripcion: 'Juguete de goma atóxica, resistente a las mordidas más fuertes.',
     destacado: false,
   },
+  // Rascador grande: poco stock (sale en críticos)
   {
     id: 5,
     nombre: 'Rascador para Gatos 3 Niveles',
@@ -86,6 +93,7 @@ export const productos = [
     descripcion: 'Rascador de tres niveles con base estable y cuerda de sisal.',
     destacado: false,
   },
+  // Salud: pipeta contra pulgas
   {
     id: 6,
     nombre: 'Antiparasitario Externo Perros',
@@ -97,6 +105,7 @@ export const productos = [
     descripcion: 'Pipeta de acción prolongada contra pulgas y garrapatas.',
     destacado: false,
   },
+  // Salud: shampoo, con oferta
   {
     id: 7,
     nombre: 'Shampoo Hipoalergénico 500 ml',
@@ -108,6 +117,7 @@ export const productos = [
     descripcion: 'Shampoo suave para pieles sensibles, con pH balanceado para mascotas.',
     destacado: false,
   },
+  // Comida de cachorro, aparece en destacados
   {
     id: 8,
     nombre: 'Alimento Cachorro Razas Pequeñas 3 kg',
@@ -120,6 +130,7 @@ export const productos = [
       'Croquetas pequeñas y fáciles de masticar, con DHA para el desarrollo de cachorros.',
     destacado: true,
   },
+  // Comida para perros mayores, con oferta
   {
     id: 9,
     nombre: 'Alimento Perro Senior 15 kg',
@@ -132,6 +143,7 @@ export const productos = [
       'Con condroitina y glucosamina para cuidar las articulaciones de perros mayores de 7 años.',
     destacado: false,
   },
+  // Latas de comida húmeda, con oferta
   {
     id: 10,
     nombre: 'Alimento Húmedo Perro, pack 12 latas',
@@ -144,6 +156,7 @@ export const productos = [
       'Latas de carne y verduras en trozos, ideales para mezclar con croquetas.',
     destacado: false,
   },
+  // Comida de gatito, aparece en destacados
   {
     id: 11,
     nombre: 'Alimento Gatito Pollo y Arroz 2 kg',
@@ -156,6 +169,7 @@ export const productos = [
       'Nutrición completa para gatitos de 2 a 12 meses, con taurina y omega 3.',
     destacado: true,
   },
+  // Comida de gato adulto, con oferta
   {
     id: 12,
     nombre: 'Alimento Gato Adulto Salmón 7,5 kg',
@@ -167,6 +181,7 @@ export const productos = [
     descripcion: 'Rico en omega 3 para un pelaje brillante y una piel saludable.',
     destacado: false,
   },
+  // Sachets húmedos para gato
   {
     id: 13,
     nombre: 'Sachets Húmedos para Gato, pack 24',
@@ -178,6 +193,7 @@ export const productos = [
     descripcion: 'Trocitos en salsa de atún y pollo, un premio húmedo para el día a día.',
     destacado: false,
   },
+  // Cama para perro, con oferta
   {
     id: 14,
     nombre: 'Cama Acolchada para Perro talla M',
@@ -190,6 +206,7 @@ export const productos = [
       'Cama suave y lavable con base antideslizante, para perros de hasta 15 kg.',
     destacado: false,
   },
+  // Collar con correa: casi sin stock (sale en críticos)
   {
     id: 15,
     nombre: 'Collar Ajustable con Correa',
@@ -201,6 +218,7 @@ export const productos = [
     descripcion: 'Nylon reforzado con cierre de seguridad y detalles reflectantes.',
     destacado: false,
   },
+  // Transportadora para viajes y veterinario
   {
     id: 16,
     nombre: 'Transportadora para Mascotas',
@@ -213,6 +231,7 @@ export const productos = [
       'Rígida y ventilada, con puerta metálica y asa cómoda. Ideal para viajes y visitas al veterinario.',
     destacado: false,
   },
+  // Rascador chico para espacios reducidos
   {
     id: 17,
     nombre: 'Poste Rascador Compacto',
@@ -225,6 +244,7 @@ export const productos = [
       'Poste cubierto de sisal con base ancha, perfecto para espacios pequeños.',
     destacado: false,
   },
+  // Vitaminas para gato, con oferta
   {
     id: 18,
     nombre: 'Multivitamínico para Gatos, 60 comprimidos',
@@ -236,6 +256,7 @@ export const productos = [
     descripcion: 'Refuerza las defensas y mejora el pelaje. Sabor pollo.',
     destacado: false,
   },
+  // Suplemento de articulaciones para perros
   {
     id: 19,
     nombre: 'Suplemento de Articulaciones, 90 tabletas',
@@ -247,6 +268,7 @@ export const productos = [
     descripcion: 'Con glucosamina y colágeno para perros activos o de edad avanzada.',
     destacado: false,
   },
+  // Kit dental: poco stock (sale en críticos)
   {
     id: 20,
     nombre: 'Kit Cuidado Dental (pasta + cepillo)',
