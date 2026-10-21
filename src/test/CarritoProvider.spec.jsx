@@ -39,6 +39,16 @@ describe('CarritoProvider (estado compartido del carrito)', () => {
     expect(result.current.items[0].cantidad).toBe(stock);
   });
 
+  // Sumar a un producto ya agregado tampoco pasa el stock
+  it('agregar más unidades a un producto ya en el carrito respeta el stock', () => {
+    const { result } = montar();
+    const stock = db.obtener('productos', 5).stock;
+    act(() => result.current.agregar(5));
+    // Vuelve a agregar más de lo que queda
+    act(() => result.current.agregar(5, stock));
+    expect(result.current.items[0].cantidad).toBe(stock);
+  });
+
   // Quitar saca un producto y vaciar saca todos
   it('quitar y vaciar eliminan líneas', () => {
     const { result } = montar();

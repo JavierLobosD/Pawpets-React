@@ -1,6 +1,13 @@
 import { cleanup, fireEvent, screen } from '@testing-library/react';
+import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import { renderizar } from './ayudas';
+
+// Muestra la ruta actual para revisar adónde navegó
+function RutaActual() {
+  const { pathname, search } = useLocation();
+  return <p data-testid="ruta">{pathname + search}</p>;
+}
 
 // Pruebas del menú de arriba
 describe('Componente Header', () => {
@@ -49,5 +56,21 @@ describe('Componente Header', () => {
     expect(boton.getAttribute('aria-expanded')).toBe('false');
     fireEvent.click(boton);
     expect(boton.getAttribute('aria-expanded')).toBe('true');
+  });
+
+  // Buscar debe llevar a productos con el texto
+  it('el buscador navega a /productos?q=texto al enviar el formulario', () => {
+    renderizar(
+      <>
+        <Header />
+        <RutaActual />
+      </>,
+      { auth: { usuario: null }, carrito },
+    );
+    fireEvent.change(screen.getByRole('searchbox', { name: 'Buscar productos' }), {
+      target: { value: 'collar' },
+    });
+    fireEvent.submit(screen.getByRole('search'));
+    expect(screen.getByTestId('ruta').textContent).toBe('/productos?q=collar');
   });
 });
