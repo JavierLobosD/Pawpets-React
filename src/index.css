@@ -76,9 +76,14 @@ body {
   margin-bottom: 1.25rem;
 }
 
-.producto-imagen,
-.categoria-imagen {
+.producto-imagen {
   height: 180px;
+  object-fit: cover;
+}
+
+/* Las categorías usan proporción 16:9 para que los banners no se recorten. */
+.categoria-imagen {
+  aspect-ratio: 16 / 9;
   object-fit: cover;
 }
 

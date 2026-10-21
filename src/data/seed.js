@@ -4,7 +4,8 @@ export const categorias = [
   {
     id: 1,
     nombre: 'Alimentos Perro',
-    imagen: 'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=400',
+    // Banner propio guardado en public/img/categorias (se sirve desde la raíz del sitio).
+    imagen: '/img/categorias/alimentos-perro.jpg',
   },
   {
     id: 2,
