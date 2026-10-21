@@ -1,11 +1,14 @@
 import { precioCLP } from '../utils/formato';
 
 /** Datos del cliente, dirección, detalle y total de una orden (compra, error y boleta). */
+// Prop: orden = objeto con los datos del cliente, la dirección, los productos y el total
 export default function ResumenOrden({ orden }) {
+  // Saca cada dato de la orden en su propia variable para usarlos más fácil
   const { nombre, apellidos, correo, calle, comuna, region, indicaciones, items, total } =
     orden;
   return (
     <>
+      {/* Datos del cliente y de la dirección de envío */}
       <dl className="row">
         <dt className="col-sm-3">Cliente</dt>
         <dd className="col-sm-9">
@@ -15,6 +18,7 @@ export default function ResumenOrden({ orden }) {
         <dd className="col-sm-9">
           {calle}, {comuna}, {region}
         </dd>
+        {/* Las indicaciones solo se muestran si el cliente escribió alguna */}
         {indicaciones && (
           <>
             <dt className="col-sm-3">Indicaciones</dt>
@@ -22,6 +26,7 @@ export default function ResumenOrden({ orden }) {
           </>
         )}
       </dl>
+      {/* Tabla con el detalle de los productos comprados */}
       <div className="table-responsive">
         <table className="table align-middle">
           <thead>
@@ -33,6 +38,7 @@ export default function ResumenOrden({ orden }) {
             </tr>
           </thead>
           <tbody>
+            {/* Una fila por cada producto de la orden */}
             {items.map((item) => (
               <tr key={item.productoId}>
                 <td>{item.nombre}</td>
@@ -44,6 +50,7 @@ export default function ResumenOrden({ orden }) {
           </tbody>
         </table>
       </div>
+      {/* Total final de la orden */}
       <p className="h5 text-end">Total: {precioCLP(total)}</p>
     </>
   );
