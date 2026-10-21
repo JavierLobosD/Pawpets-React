@@ -24,7 +24,7 @@ export const categorias = [
 ];
 
 // Arma el link de una foto de Unsplash a partir de su id, así no repetimos la URL larga.
-const foto = (id) => `https://unsplash.com/photos/${id}/download?force=true&w=500`;
+const foto = (id) => `https://images.unsplash.com/photo-${id}?w=500&q=80`;
 
 // Productos de la tienda (20 en total). precio y precioOferta van en pesos chilenos
 // y imagen es el link de la foto.
@@ -77,7 +77,7 @@ export const productos = [
     precio: 3990,
     precioOferta: 2990,
     stock: 4,
-    imagen: foto('nm0Gdbq_Hr0'),
+    imagen: foto('1696416806113-1f247ff0eb5c'),
     descripcion: 'Juguete de goma atóxica, resistente a las mordidas más fuertes.',
     destacado: false,
   },
@@ -89,7 +89,7 @@ export const productos = [
     precio: 24990,
     precioOferta: 0,
     stock: 3,
-    imagen: foto('p2V_ViGLv0c'),
+    imagen: foto('1724023838952-a12ba4b36a8a'),
     descripcion: 'Rascador de tres niveles con base estable y cuerda de sisal.',
     destacado: false,
   },
@@ -101,7 +101,7 @@ export const productos = [
     precio: 9990,
     precioOferta: 0,
     stock: 12,
-    imagen: foto('6lA-iDytKtQ'),
+    imagen: foto('1628009368231-7bb7cfcb0def'),
     descripcion: 'Pipeta de acción prolongada contra pulgas y garrapatas.',
     destacado: false,
   },
@@ -113,7 +113,7 @@ export const productos = [
     precio: 7490,
     precioOferta: 5990,
     stock: 9,
-    imagen: foto('qwIeh5M8bF8'),
+    imagen: foto('1597603413826-cd1c06b05222'),
     descripcion: 'Shampoo suave para pieles sensibles, con pH balanceado para mascotas.',
     destacado: false,
   },
@@ -125,7 +125,7 @@ export const productos = [
     precio: 12990,
     precioOferta: 0,
     stock: 30,
-    imagen: foto('TdSLxJC8Oz8'),
+    imagen: foto('1764249453874-46864677b10e'),
     descripcion:
       'Croquetas pequeñas y fáciles de masticar, con DHA para el desarrollo de cachorros.',
     destacado: true,
@@ -138,7 +138,7 @@ export const productos = [
     precio: 32990,
     precioOferta: 29990,
     stock: 14,
-    imagen: foto('QIbjKOsmIhQ'),
+    imagen: foto('1632236568054-12f36ecee2f6'),
     descripcion:
       'Con condroitina y glucosamina para cuidar las articulaciones de perros mayores de 7 años.',
     destacado: false,
@@ -151,7 +151,7 @@ export const productos = [
     precio: 14990,
     precioOferta: 12990,
     stock: 22,
-    imagen: foto('xWKBOhVXBQ4'),
+    imagen: foto('1676193866128-03a926df76ef'),
     descripcion:
       'Latas de carne y verduras en trozos, ideales para mezclar con croquetas.',
     destacado: false,
@@ -164,7 +164,7 @@ export const productos = [
     precio: 11990,
     precioOferta: 0,
     stock: 27,
-    imagen: foto('2Cl0lX_4bag'),
+    imagen: foto('1520811607976-6d7812b0ecac'),
     descripcion:
       'Nutrición completa para gatitos de 2 a 12 meses, con taurina y omega 3.',
     destacado: true,
@@ -177,7 +177,7 @@ export const productos = [
     precio: 29990,
     precioOferta: 26990,
     stock: 16,
-    imagen: foto('U5wnUxoR2T8'),
+    imagen: foto('1668795930946-f0ab82562d81'),
     descripcion: 'Rico en omega 3 para un pelaje brillante y una piel saludable.',
     destacado: false,
   },
@@ -189,7 +189,7 @@ export const productos = [
     precio: 12490,
     precioOferta: 0,
     stock: 8,
-    imagen: foto('bIW1a6svo1k'),
+    imagen: foto('1591324535489-9c78376631dc'),
     descripcion: 'Trocitos en salsa de atún y pollo, un premio húmedo para el día a día.',
     destacado: false,
   },
@@ -201,7 +201,7 @@ export const productos = [
     precio: 21990,
     precioOferta: 18990,
     stock: 11,
-    imagen: foto('orMEQSQMz_Y'),
+    imagen: foto('1708303364738-48188a0e050f'),
     descripcion:
       'Cama suave y lavable con base antideslizante, para perros de hasta 15 kg.',
     destacado: false,
@@ -214,7 +214,7 @@ export const productos = [
     precio: 8990,
     precioOferta: 0,
     stock: 2,
-    imagen: foto('hYAJpcPo_eg'),
+    imagen: foto('1673069783560-6d4094285be4'),
     descripcion: 'Nylon reforzado con cierre de seguridad y detalles reflectantes.',
     destacado: false,
   },
@@ -226,7 +226,7 @@ export const productos = [
     precio: 27990,
     precioOferta: 0,
     stock: 7,
-    imagen: foto('Ea8rP2Ebp_4'),
+    imagen: foto('1527150602-a98f7a6f2746'),
     descripcion:
       'Rígida y ventilada, con puerta metálica y asa cómoda. Ideal para viajes y visitas al veterinario.',
     destacado: false,
@@ -239,7 +239,7 @@ export const productos = [
     precio: 12990,
     precioOferta: 0,
     stock: 15,
-    imagen: foto('1hBWrLIDSCc'),
+    imagen: foto('1545249390-6bdfa286032f'),
     descripcion:
       'Poste cubierto de sisal con base ancha, perfecto para espacios pequeños.',
     destacado: false,
@@ -252,7 +252,7 @@ export const productos = [
     precio: 11490,
     precioOferta: 9990,
     stock: 13,
-    imagen: foto('CXdS3SWOOJc'),
+    imagen: foto('1628119402607-6e4bea9a9243'),
     descripcion: 'Refuerza las defensas y mejora el pelaje. Sabor pollo.',
     destacado: false,
   },
@@ -264,7 +264,7 @@ export const productos = [
     precio: 19990,
     precioOferta: 0,
     stock: 6,
-    imagen: foto('sIZ94nQTh6Q'),
+    imagen: foto('1659398730848-99dddd3520a3'),
     descripcion: 'Con glucosamina y colágeno para perros activos o de edad avanzada.',
     destacado: false,
   },
@@ -276,7 +276,7 @@ export const productos = [
     precio: 8490,
     precioOferta: 0,
     stock: 4,
-    imagen: foto('TP6HEPC5rnk'),
+    imagen: foto('1770836037816-4445dbd449fd'),
     descripcion:
       'Pasta con sabor a carne y cepillo de doble cabezal para limpiar sin estrés.',
     destacado: false,
