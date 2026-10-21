@@ -90,9 +90,11 @@ body {
 }
 
 /* Todas las fotos de productos del mismo alto */
+/* Cambio: contain y fondo blanco para no recortar bolsas verticales */
 .producto-imagen {
   height: 180px;
-  object-fit: cover;
+  object-fit: contain;
+  background: #fff;
 }
 
 /* Las categorías usan proporción 16:9 para que los banners no se recorten. */
