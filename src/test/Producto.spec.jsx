@@ -2,11 +2,20 @@ import { cleanup, fireEvent, screen } from '@testing-library/react';
 import ListaProductos from '../components/ListaProductos';
 import Producto from '../components/Producto';
 import { productoEjemplo, renderizar } from './ayudas';
+import {enOferta, esCritico, filtrarProductos, precioFinal, UMBRAL_CRITICO} from '../utils/productos';
 
 // Pruebas de la tarjeta de producto
 describe('Componente Producto', () => {
   // Limpia la pantalla después de cada prueba
   afterEach(cleanup);
+
+  //Con precioOferta mayor a 0 esta en oferta; con 0, no
+  it('enOferta es true solo si hay precio de oferta', () => {
+    //Con oferta (8000)
+    expect(enOferta({...productoEjemplo, precioOferta: 8000})).toBeTrue();
+    //Sin oferta (0)
+    expect(enOferta(productoEjemplo)).toBeFalse();
+  })
 
   // Debe mostrar el nombre y el precio con formato
   it('renderiza el nombre y el precio formateado recibidos por props', () => {
