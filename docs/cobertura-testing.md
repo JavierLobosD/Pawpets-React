@@ -389,7 +389,7 @@ para que cada prueba parta limpia y no afecte a la siguiente.
 > prueba los importa, así que no están incluidos en el porcentaje: `App.jsx`, `layouts/` (2),
 > `Footer.jsx`, `FormularioEntidad.jsx`, `ListaCategorias.jsx`, `ResumenOrden.jsx`, las páginas
 > `Blogs`, `Categorias`, `Checkout`, `DetalleBlog`, `DetalleProducto`, `Home`, `Nosotros`,
-> `Ofertas`, `PagoResultado`, `Productos`, y las 9 vistas de `pages/admin/`.
+> `Ofertas`, `PagoResultado`, `Productos`, y las 10 vistas de `pages/admin/`.
 
 ---
 
