@@ -1,5 +1,7 @@
 // Página "Nosotros" con información de la tienda
+// Ruta: /nosotros. Solo muestra texto: no usa estado ni datos
 export default function Nosotros() {
+  // justify-content-center centra la columna dentro de la fila
   return (
     <section className="row justify-content-center">
       {/* Texto centrado que cuenta quiénes somos */}

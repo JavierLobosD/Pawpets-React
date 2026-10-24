@@ -1,14 +1,21 @@
+// Link: componente de react-router para ir a otra página sin recargar
 import { Link } from 'react-router-dom';
+// useCarrito: hook propio para leer y cambiar el carrito compartido
 import useCarrito from '../hooks/useCarrito';
+// precioCLP: da formato de pesos chilenos a un número
 import { precioCLP } from '../utils/formato';
+// precioFinal: precio de oferta si hay, o el normal
 import { precioFinal } from '../utils/productos';
 
 // Página del carrito con los productos que eligió el usuario
+// Ruta: /carrito
 export default function Carrito() {
   // Productos, total y acciones para modificar el carrito
+  // Todo viene del CarritoProvider, así esta página no guarda estado propio
   const { items, total, cambiarCantidad, quitar, vaciar } = useCarrito();
 
   // Si el carrito está vacío, muestra un aviso
+  // y un link para volver a los productos
   if (items.length === 0) {
     return (
       <p className="alert alert-info">
@@ -17,18 +24,22 @@ export default function Carrito() {
     );
   }
 
+  // Si hay productos, muestra la tabla, el total y los botones
   return (
     <>
       <h1 className="section-title">Carrito de compras</h1>
       {/* Tabla con los productos del carrito */}
+      {/* table-responsive permite moverla de lado en pantallas chicas */}
       <div className="table-responsive">
         <table className="table align-middle">
+          {/* Títulos de las columnas */}
           <thead>
             <tr>
               <th scope="col">Producto</th>
               <th scope="col">Precio</th>
               <th scope="col">Cantidad</th>
               <th scope="col">Subtotal</th>
+              {/* Columna de los botones: el título está oculto, solo lo leen los lectores de pantalla */}
               <th scope="col">
                 <span className="visually-hidden">Acciones</span>
               </th>
@@ -36,12 +47,15 @@ export default function Carrito() {
           </thead>
           <tbody>
             {/* Una fila por cada producto */}
+            {/* Cada item trae el producto completo, la cantidad y el subtotal */}
             {items.map(({ producto, cantidad, subtotal }) => (
               <tr key={producto.id}>
                 <td>{producto.nombre}</td>
                 <td>{precioCLP(precioFinal(producto))}</td>
                 <td>
                   {/* Input para cambiar la cantidad, máximo el stock */}
+                  {/* Al cambiarlo llama a cambiarCantidad con el número nuevo */}
+                  {/* Number() porque el input entrega texto */}
                   <input
                     type="number"
                     className="form-control form-control-sm cantidad-input"
@@ -72,9 +86,11 @@ export default function Carrito() {
       <p className="h4 text-end">Total: {precioCLP(total)}</p>
       {/* Botones para vaciar el carrito o ir a pagar */}
       <div className="d-flex justify-content-end gap-2">
+        {/* Limpiar llama a vaciar y deja el carrito sin productos */}
         <button type="button" className="btn btn-secondary" onClick={vaciar}>
           Limpiar
         </button>
+        {/* Comprar ahora lleva a la página de pago */}
         <Link to="/checkout" className="btn btn-success">
           Comprar ahora
         </Link>

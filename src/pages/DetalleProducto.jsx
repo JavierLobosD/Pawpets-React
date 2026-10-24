@@ -1,24 +1,34 @@
+// useState: hook de React para guardar datos que cambian (estado)
 import { useState } from 'react';
+// Link: ir a otra página sin recargar; useParams: leer el :id de la URL
 import { Link, useParams } from 'react-router-dom';
+// Hooks propios: carrito compartido y colecciones de db
 import useCarrito from '../hooks/useCarrito';
 import useColeccion from '../hooks/useColeccion';
+// precioCLP: da formato de pesos chilenos a un número
 import { precioCLP } from '../utils/formato';
+// enOferta: dice si tiene oferta; precioFinal: precio que se cobra
 import { enOferta, precioFinal } from '../utils/productos';
 
 // Página con toda la información de un producto
+// Ruta: /productos/:id
 export default function DetalleProducto() {
   // Saca el id del producto desde la URL
   const { id } = useParams();
   // Busca el producto que tiene ese id
+  // Number(id) porque en la URL el id es texto
   const producto = useColeccion('productos').find((p) => p.id === Number(id));
   // Función para agregar al carrito
   const { agregar } = useCarrito();
   // Cantidad que el usuario quiere comprar, parte en 1
+  // setCantidad la cambia cuando el usuario escribe en el input
   const [cantidad, setCantidad] = useState(1);
   // Dice si ya se agregó al carrito, para mostrar aviso
+  // Parte en false: el aviso no se ve hasta apretar el botón
   const [agregado, setAgregado] = useState(false);
 
   // Si el producto no existe, muestra un aviso
+  // (por ejemplo si alguien escribe /productos/999)
   if (!producto) {
     return (
       <p className="alert alert-warning">
@@ -29,14 +39,18 @@ export default function DetalleProducto() {
 
   // Agrega la cantidad elegida al carrito y muestra el aviso
   function agregarAlCarrito() {
+    // agregar viene del CarritoProvider; él revisa que no pase el stock
     agregar(producto.id, cantidad);
+    // Cambia el estado para que aparezca el mensaje "Producto agregado"
     setAgregado(true);
   }
 
+  // Dos columnas: imagen a la izquierda y datos a la derecha (en pantallas medianas)
   return (
     <div className="row g-4">
       {/* Columna de la imagen, o un reemplazo si no tiene */}
       <div className="col-md-6">
+        {/* Si producto.imagen tiene algo se muestra la foto; si no, el cuadro de reemplazo */}
         {producto.imagen ? (
           <img
             src={producto.imagen}
@@ -59,14 +73,17 @@ export default function DetalleProducto() {
           )}
           {precioCLP(precioFinal(producto))}
         </p>
+        {/* Descripción y stock del producto */}
         <p>{producto.descripcion}</p>
         <p className="text-secondary">Stock disponible: {producto.stock}</p>
         {/* Elegir cantidad y botón para agregar al carrito */}
         <div className="d-flex gap-2 align-items-center mb-3">
+          {/* htmlFor="cantidad" conecta la etiqueta con el input de id "cantidad" */}
           <label htmlFor="cantidad" className="form-label mb-0">
             Cantidad
           </label>
           {/* La cantidad nunca baja de 1 */}
+          {/* Math.max(1, ...) cambia 0 o números negativos por 1 */}
           <input
             id="cantidad"
             type="number"
