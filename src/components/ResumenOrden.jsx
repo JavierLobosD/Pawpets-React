@@ -1,14 +1,18 @@
+// precioCLP: da formato de pesos chilenos a un número
 import { precioCLP } from '../utils/formato';
 
 /** Datos del cliente, dirección, detalle y total de una orden (compra, error y boleta). */
 // Prop: orden = objeto con los datos del cliente, la dirección, los productos y el total
+// Se usa en PagoResultado (compra exitosa o con error) y en la Boleta del admin
 export default function ResumenOrden({ orden }) {
   // Saca cada dato de la orden en su propia variable para usarlos más fácil
   const { nombre, apellidos, correo, calle, comuna, region, indicaciones, items, total } =
     orden;
+  // <> </> agrupa varios elementos sin agregar un div extra
   return (
     <>
       {/* Datos del cliente y de la dirección de envío */}
+      {/* dl/dt/dd = lista de "título: dato"; col-sm-3 y col-sm-9 los ponen en dos columnas */}
       <dl className="row">
         <dt className="col-sm-3">Cliente</dt>
         <dd className="col-sm-9">
@@ -27,8 +31,10 @@ export default function ResumenOrden({ orden }) {
         )}
       </dl>
       {/* Tabla con el detalle de los productos comprados */}
+      {/* table-responsive permite moverla de lado en pantallas chicas */}
       <div className="table-responsive">
         <table className="table align-middle">
+          {/* Títulos de las columnas */}
           <thead>
             <tr>
               <th scope="col">Producto</th>
@@ -39,6 +45,7 @@ export default function ResumenOrden({ orden }) {
           </thead>
           <tbody>
             {/* Una fila por cada producto de la orden */}
+            {/* key={item.productoId} identifica cada fila para React */}
             {items.map((item) => (
               <tr key={item.productoId}>
                 <td>{item.nombre}</td>

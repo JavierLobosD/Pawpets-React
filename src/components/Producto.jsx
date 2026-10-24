@@ -1,5 +1,8 @@
+// useState: hook de React para guardar datos que cambian (estado)
 import { useState } from 'react';
+// Link: componente de react-router para ir a otra página sin recargar
 import { Link } from 'react-router-dom';
+// precioCLP: da formato de pesos chilenos a un número
 import { precioCLP } from '../utils/formato';
 
 /**
@@ -18,13 +21,17 @@ export default function Producto({
   onAgregar,
 }) {
   // Se pone en true si la imagen no pudo cargar
+  // Parte en false porque al principio se intenta mostrar la imagen
   const [imagenFallo, setImagenFallo] = useState(false);
   // Si tiene precio de oferta mayor a 0, el producto está en oferta
   const enOferta = precioOferta > 0;
 
+  // Lo que se dibuja: una tarjeta (card) de Bootstrap
   return (
     <article className="card h-100 shadow-sm producto-card">
       {/* Muestra la imagen si existe y no falló; si no, un cuadro de reemplazo */}
+      {/* imagen?.trim() es falso si no hay imagen o si es un texto vacío */}
+      {/* onError se ejecuta si la imagen no carga: cambia el estado y React muestra el reemplazo */}
       {imagen?.trim() && !imagenFallo ? (
         <img
           src={imagen}
@@ -36,6 +43,7 @@ export default function Producto({
       ) : (
         <div className="producto-imagen producto-placeholder">Imagen no disponible</div>
       )}
+      {/* Cuerpo de la tarjeta en columna, para dejar el botón siempre abajo (mt-auto) */}
       <div className="card-body d-flex flex-column">
         {/* Nombre del producto con link a su página de detalle */}
         <h3 className="h6 card-title">
@@ -45,14 +53,17 @@ export default function Producto({
         </h3>
         {/* Precios: si está en oferta, muestra el precio normal tachado y el de oferta */}
         <p className="mb-3">
+          {/* Precio normal tachado: solo aparece si enOferta es true */}
           {enOferta && (
             <span className="text-decoration-line-through text-secondary me-2">
               {precioCLP(precio)}
             </span>
           )}
+          {/* Precio que se cobra, en negrita */}
           <strong>{precioCLP(enOferta ? precioOferta : precio)}</strong>
         </p>
         {/* Botón para agregar al carrito; se desactiva si no queda stock */}
+        {/* Al hacer clic llama a onAgregar con el id; la función real viene del padre */}
         <button
           type="button"
           className="btn btn-primary mt-auto"
