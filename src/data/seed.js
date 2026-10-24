@@ -1,23 +1,29 @@
 /** Datos iniciales de la tienda. db.js los copia a localStorage la primera vez. */
 
 // Las 4 categorías de la tienda con su imagen
+// Campos: id = número único; nombre = lo que se muestra; imagen = ruta del banner
+// Se exporta con "export const" para que db.js lo pueda leer
 export const categorias = [
+  // Categoría 1: comida para perros
   {
     id: 1,
     nombre: 'Alimentos Perro',
     // Banner propio guardado en public/img/categorias (se sirve desde la raíz del sitio).
     imagen: '/img/categorias/categoria-perro.jpg',
   },
+  // Categoría 2: comida para gatos
   {
     id: 2,
     nombre: 'Alimentos Gato',
     imagen: '/img/categorias/categoria-gatos.jpg',
   },
+  // Categoría 3: juguetes, camas, collares y otros accesorios
   {
     id: 3,
     nombre: 'Juguetes y Accesorios',
     imagen: '/img/categorias/categoria-juguetes.jpg',
   },
+  // Categoría 4: remedios, vitaminas e higiene
   {
     id: 4,
     nombre: 'Salud',
@@ -30,6 +36,9 @@ export const categorias = [
 // Productos de la tienda (20 en total). precio y precioOferta van en pesos chilenos
 // y imagen es el link de la foto.
 // precioOferta = 0 significa "sin oferta". stock <= UMBRAL_CRITICO se considera crítico.
+// Otros campos: id = número único; categoriaId = id de su categoría (1 a 4);
+// stock = unidades disponibles; descripcion = texto del detalle;
+// destacado = true si aparece en la sección de destacados del inicio.
 export const productos = [
   // Alimentos para perro: el más vendido, sin oferta
   {
@@ -284,6 +293,8 @@ export const productos = [
 ];
 
 // Las contraseñas están en texto plano solo porque esto simula una base de datos.
+// Campos: id = número único; nombre y apellidos; correo y clave = datos para entrar;
+// rol = 'admin' (entra al panel) o 'cliente'; region, comuna y calle = dirección de despacho.
 export const usuarios = [
   // Cuenta de administrador para entrar al panel
   {
@@ -312,7 +323,9 @@ export const usuarios = [
 ];
 
 // Artículos del blog: título, resumen corto y texto completo
+// Campos: id = número único; titulo; resumen = se ve en la lista; contenido = se ve en el detalle
 export const blogs = [
+  // Artículo 1: consejos de alimentación
   {
     id: 1,
     titulo: 'Cómo elegir el alimento ideal para tu perro',
@@ -320,6 +333,7 @@ export const blogs = [
     contenido:
       'Cada perro tiene necesidades distintas según su edad, tamaño y nivel de actividad. Un cachorro requiere más proteínas y calorías; un adulto necesita equilibrio; un perro senior, menos grasa y apoyo articular. Lee siempre la etiqueta y consulta con tu veterinario antes de cambiar la dieta.',
   },
+  // Artículo 2: adopción y tenencia responsable
   {
     id: 2,
     titulo: 'Adopta, no compres: tenencia responsable',
@@ -330,6 +344,8 @@ export const blogs = [
 ];
 
 // Región -> comunas, para los selects dependientes del checkout y del registro.
+// Es un objeto: la clave es el nombre de la región y el valor es la lista de sus comunas.
+// No hay lista de órdenes aquí: db.js parte esa colección vacía ([]) hasta la primera compra.
 export const regiones = {
   'Región Metropolitana de Santiago': ['Puente Alto', 'Maipú', 'Providencia', 'Santiago'],
   'Región de Valparaíso': ['Valparaíso', 'Viña del Mar', 'Quilpué'],
