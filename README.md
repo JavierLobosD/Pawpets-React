@@ -39,7 +39,7 @@ Para probar el **pago con error**, en el checkout elige el medio de pago "Tarjet
   - Formularios controlados con el hook `useFormulario` + reglas de `utils/validaciones.js`.
 - **Bootstrap responsive:** grilla (`row`/`col-*`), `navbar-expand-xl`, `table-responsive`, `form-control`, etc. La paleta de PawPets sobrescribe las variables de Bootstrap en `src/index.css`.
 - **Archivo de datos + CRUD + persistencia:** `src/data/db.js` (`listar`, `obtener`, `crear`, `actualizar`, `eliminar`). `useColeccion` conecta `db` con React para que la interfaz se actualice sola.
-- **Pruebas unitarias (IE2.2.1 / IE2.2.2):** 40 pruebas en `src/test/`.
+- **Pruebas unitarias (IE2.2.1 / IE2.2.2):** 48 pruebas en 13 archivos de `src/test/`.
 - **Proceso de testeo (IE2.3.1 / IE2.3.2):**
   - Configuración del entorno: `karma.conf.cjs` (Jasmine + webpack + Babel + Istanbul).
   - Mocks: `jasmine.createSpy` (callbacks, `iniciarSesion`, `cerrarSesion`), contextos simulados (`src/test/ayudas.jsx`) y `spyOn(Storage.prototype, 'setItem')`.
@@ -48,5 +48,5 @@ Para probar el **pago con error**, en el checkout elige el medio de pago "Tarjet
 ## Notas
 
 - Las contraseñas se guardan en texto plano en localStorage **solo porque `db.js` simula una base de datos**; con backend real irían cifradas.
-- La cobertura mide los archivos que las pruebas importan; las páginas sin prueba propia no aparecen en el reporte.
-- Las imágenes de categorías y productos son URLs externas (Unsplash); los productos sin imagen muestran un reemplazo.
+- La cobertura mide solo los archivos que las pruebas importan (25 de `src/`). Los otros 27 (varias páginas, el panel admin, los layouts, `App.jsx` y `main.jsx`) no aparecen en el reporte. El detalle está en `docs/cobertura-testing.md`.
+- Las imágenes de categorías y productos están dentro del proyecto, en `public/img/categorias` y `public/img/productos`. Si un producto no tiene imagen se muestra el cuadro "Imagen no disponible" (en la tarjeta del producto también aparece si la imagen no carga).
