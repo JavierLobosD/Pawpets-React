@@ -1,16 +1,24 @@
 <!doctype html>
+<!-- Única página HTML del sitio: React dibuja todo lo demás dentro de ella -->
+<!-- lang="es" indica que el contenido está en español -->
 <html lang="es">
   <head>
+    <!-- Codificación de caracteres, para que se vean bien tildes y ñ -->
     <meta charset="UTF-8" />
+    <!-- Hace que la página se adapte al ancho del celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Ícono de la pestaña: una huellita 🐾 dibujada como SVG escrito directo en el link -->
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>"
     />
+    <!-- Título que se ve en la pestaña (&amp; es el símbolo &) -->
     <title>PawPets | Petshop &amp; Cuidado Animal</title>
   </head>
   <body>
+    <!-- Div vacío donde main.jsx monta la app de React -->
     <div id="root"></div>
+    <!-- Carga el punto de partida de la app; type="module" permite usar import -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,13 +1,20 @@
 /* Paleta PawPets: sobrescribe las variables de Bootstrap en lugar de duplicar sus estilos. */
+/* :root es la raíz de la página: las variables definidas aquí sirven en todo el sitio */
 :root {
   /* Colores propios de la tienda */
+  /* Naranjo principal y su versión más oscura */
   --paw-primario: #ff8a3d;
   --paw-primario-oscuro: #e5732a;
+  /* Verde azulado para títulos y links */
   --paw-secundario: #2c7a7b;
+  /* Azul muy oscuro para el texto, el menú y el pie de página */
   --paw-oscuro: #22303c;
+  /* Crema claro para el fondo */
   --paw-claro: #fef6ee;
   /* Cambia el color principal y los links de Bootstrap */
+  /* var(--nombre) usa el valor de una variable */
   --bs-primary: var(--paw-primario);
+  /* El mismo naranjo en formato rojo, verde, azul (Bootstrap lo usa para transparencias) */
   --bs-primary-rgb: 255, 138, 61;
   --bs-link-color: var(--paw-secundario);
   --bs-link-hover-color: var(--paw-primario-oscuro);
@@ -15,27 +22,35 @@
 
 /* Fondo claro y texto oscuro en toda la página */
 body {
+  /* Ancho mínimo para que no se desarme en celulares muy chicos */
   min-width: 320px;
   background: var(--paw-claro);
   color: var(--paw-oscuro);
 }
 
 /* Botón principal naranjo, más oscuro al pasar el mouse */
+/* Se cambian las variables que Bootstrap usa para pintar .btn-primary */
 .btn-primary {
+  /* Color normal del fondo y del borde */
   --bs-btn-bg: var(--paw-primario);
   --bs-btn-border-color: var(--paw-primario);
+  /* Al pasar el mouse (hover) */
   --bs-btn-hover-bg: var(--paw-primario-oscuro);
   --bs-btn-hover-border-color: var(--paw-primario-oscuro);
+  /* Mientras se hace clic (active) */
   --bs-btn-active-bg: var(--paw-primario-oscuro);
   --bs-btn-active-border-color: var(--paw-primario-oscuro);
+  /* Cuando está desactivado (por ejemplo "Sin stock") */
   --bs-btn-disabled-bg: var(--paw-primario);
   --bs-btn-disabled-border-color: var(--paw-primario);
+  /* Texto blanco en todos los casos */
   --bs-btn-color: #fff;
   --bs-btn-hover-color: #fff;
   --bs-btn-active-color: #fff;
 }
 
 /* Fondo oscuro para el menú de tienda y admin */
+/* La coma aplica la misma regla a las dos clases */
 .site-header,
 .admin-menu {
   background: var(--paw-oscuro);
@@ -44,16 +59,20 @@ body {
 /* Texto del logo naranjo y en negrita */
 .logo {
   color: var(--paw-primario);
+  /* 700 = negrita */
   font-weight: 700;
+  /* 1.4 veces el tamaño normal de letra */
   font-size: 1.4rem;
 }
 
 /* Links del menú en blanco */
+/* Solo los .nav-link que están dentro de .site-header */
 .site-header .nav-link {
   color: #fff;
 }
 
 /* Link activo o con el mouse encima en naranjo */
+/* .active la pone NavLink en el link de la página actual */
 .site-header .nav-link:hover,
 .site-header .nav-link.active {
   color: var(--paw-primario);
@@ -73,12 +92,16 @@ body {
 .hero {
   background: var(--paw-secundario);
   color: #fff;
+  /* Esquinas redondeadas */
   border-radius: 12px;
+  /* Espacio interior: 3rem arriba y abajo, 1.5rem a los lados */
   padding: 3rem 1.5rem;
+  /* Separación con lo que viene abajo */
   margin-bottom: 2.5rem;
 }
 
 /* Banner de adopción en naranjo */
+/* Se usa junto con .hero y solo cambia el color de fondo */
 .hero-adopcion {
   background: var(--paw-primario);
 }
@@ -93,6 +116,7 @@ body {
 /* Cambio: contain y fondo blanco para no recortar bolsas verticales */
 .producto-imagen {
   height: 180px;
+  /* contain = la foto entra completa en el cuadro, sin cortarse */
   object-fit: contain;
   background: #fff;
 }
@@ -100,14 +124,17 @@ body {
 /* Las categorías usan proporción 16:9 para que los banners no se recorten. */
 .categoria-imagen {
   aspect-ratio: 16 / 9;
+  /* cover = la foto llena todo el cuadro */
   object-fit: cover;
 }
 
 /* Cuadro gris cuando un producto no tiene imagen */
 .producto-placeholder {
+  /* flex con align-items y justify-content centra el texto en el cuadro */
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Mismo alto que las fotos, para que las tarjetas queden parejas */
   min-height: 180px;
   background: #e9ecef;
   color: #6c757d;
@@ -122,6 +149,7 @@ body {
 .site-footer {
   background: var(--paw-oscuro);
   color: #ddd;
+  /* 2rem arriba, 0 a los lados, 1rem abajo */
   padding: 2rem 0 1rem;
 }
 
@@ -131,6 +159,7 @@ body {
 }
 
 /* Links del pie uno debajo del otro, sin subrayado */
+/* display: block hace que cada link ocupe su propia línea */
 .site-footer a {
   display: block;
   color: #ddd;
@@ -141,14 +170,18 @@ body {
 .footer-bottom {
   margin: 1.5rem 0 0;
   padding-top: 1rem;
+  /* Línea gris arriba del texto */
   border-top: 1px solid #444;
   text-align: center;
+  /* Letra un poco más chica */
   font-size: 0.85rem;
 }
 
 /* Desde pantallas medianas, el menú admin ocupa todo el alto */
+/* @media aplica estas reglas solo si la pantalla mide 768px de ancho o más */
 @media (min-width: 768px) {
   .admin-menu {
+    /* 100vh = el alto completo de la ventana */
     min-height: 100vh;
   }
 }
