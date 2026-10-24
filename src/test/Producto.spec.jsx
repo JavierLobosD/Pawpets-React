@@ -2,7 +2,7 @@ import { cleanup, fireEvent, screen } from '@testing-library/react';
 import ListaProductos from '../components/ListaProductos';
 import Producto from '../components/Producto';
 import { productoEjemplo, renderizar } from './ayudas';
-import {enOferta, esCritico, filtrarProductos, precioFinal, UMBRAL_CRITICO} from '../utils/productos';
+import { enOferta } from '../utils/productos';
 
 // Pruebas de la tarjeta de producto
 describe('Componente Producto', () => {
