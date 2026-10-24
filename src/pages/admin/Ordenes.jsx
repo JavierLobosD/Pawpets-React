@@ -1,10 +1,15 @@
+// Link: componente de react-router para ir a otra página sin recargar
 import { Link } from 'react-router-dom';
+// useColeccion: hook propio que trae una colección de db y se actualiza sola
 import useColeccion from '../../hooks/useColeccion';
+// precioCLP: da formato de pesos chilenos a un número
 import { precioCLP } from '../../utils/formato';
 
 // Página del admin con todas las órdenes
+// Ruta: /admin/ordenes
 export default function Ordenes() {
   // Trae todas las órdenes guardadas
+  // Incluye las pagadas y las rechazadas
   const ordenes = useColeccion('ordenes');
   return (
     <>
@@ -15,6 +20,7 @@ export default function Ordenes() {
       ) : (
         <div className="table-responsive">
           <table className="table align-middle">
+            {/* Títulos de las columnas */}
             <thead>
               <tr>
                 <th scope="col">N°</th>
@@ -29,13 +35,16 @@ export default function Ordenes() {
               {/* Una fila por cada orden */}
               {ordenes.map((o) => (
                 <tr key={o.id}>
+                  {/* Número de la orden; scope="row" indica que es el título de la fila */}
                   <th scope="row">{o.id}</th>
                   {/* Fecha en formato chileno */}
                   <td>{new Date(o.fecha).toLocaleDateString('es-CL')}</td>
+                  {/* Nombre del cliente que escribió en el checkout */}
                   <td>
                     {o.nombre} {o.apellidos}
                   </td>
                   <td>{precioCLP(o.total)}</td>
+                  {/* 'Pagada' o 'Rechazada' */}
                   <td>{o.estado}</td>
                   <td>
                     {/* Link para ver la boleta de la orden */}

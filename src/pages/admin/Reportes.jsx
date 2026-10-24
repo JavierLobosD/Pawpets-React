@@ -1,10 +1,15 @@
+// useColeccion: hook propio que trae una colección de db y se actualiza sola
 import useColeccion from '../../hooks/useColeccion';
+// precioCLP: da formato de pesos chilenos a un número
 import { precioCLP } from '../../utils/formato';
+// resumenVentas: calcula los totales a partir de las órdenes (utils/reportes.js)
 import { resumenVentas } from '../../utils/reportes';
 
 // Página con los reportes de ventas
+// Ruta: /admin/reportes
 export default function Reportes() {
   // Calcula los totales de ventas a partir de las órdenes
+  // Se sacan los cuatro datos que devuelve resumenVentas
   const { ventasTotales, ordenesPagadas, ordenesRechazadas, porProducto } = resumenVentas(
     useColeccion('ordenes'),
   );
@@ -13,6 +18,7 @@ export default function Reportes() {
       <h1 className="h3">Reportes</h1>
       {/* Tarjetas con los números principales */}
       <div className="row g-3 mb-4">
+        {/* Lista de [título, valor] que se recorre con map para no repetir la tarjeta */}
         {[
           ['Ventas totales', precioCLP(ventasTotales)],
           ['Órdenes pagadas', ordenesPagadas],
@@ -30,6 +36,7 @@ export default function Reportes() {
       <h2 className="h5">Ventas por producto</h2>
       <div className="table-responsive">
         <table className="table">
+          {/* Títulos de las columnas */}
           <thead>
             <tr>
               <th scope="col">Producto</th>
@@ -38,6 +45,7 @@ export default function Reportes() {
             </tr>
           </thead>
           <tbody>
+            {/* Una fila por producto, ya ordenadas de mayor a menor ingreso */}
             {porProducto.map((p) => (
               <tr key={p.nombre}>
                 <td>{p.nombre}</td>
